@@ -70,6 +70,7 @@ public class MemberRepositoryV0 {
         PreparedStatement ps = null;
 
         try {
+            asdasd
             con = getConnection();
             ps = con.prepareStatement(sql);
             ps.setInt(1, money);
