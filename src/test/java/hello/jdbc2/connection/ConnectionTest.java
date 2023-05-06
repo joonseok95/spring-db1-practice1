@@ -39,7 +39,6 @@ public class ConnectionTest {
         dataSource.setUsername(USERNAME);
         dataSource.setPassword(PASSWORD);
         dataSource.setMaximumPoolSize(10);
-        dataSource.setPoolName("MyPool");
     }
 
     private void useDataSource(DataSource dataSource) throws SQLException {
