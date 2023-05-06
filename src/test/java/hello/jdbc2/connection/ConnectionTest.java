@@ -32,7 +32,7 @@ public class ConnectionTest {
     }
 
     @Test
-    void dataSourceConnectionPool() {
+    void dataSourceConnectionPool() throws SQLException, InterruptedException {
         // 커넥션 풀링
         HikariDataSource dataSource = new HikariDataSource();
         dataSource.setJdbcUrl(URL);
@@ -40,6 +40,9 @@ public class ConnectionTest {
         dataSource.setPassword(PASSWORD);
         dataSource.setMaximumPoolSize(10);
         dataSource.setPoolName("jspPool");
+        useDataSource(dataSource);
+        Thread.sleep(1000);
+
     }
 
     private void useDataSource(DataSource dataSource) throws SQLException {
