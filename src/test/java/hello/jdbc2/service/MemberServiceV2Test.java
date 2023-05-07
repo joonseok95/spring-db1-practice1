@@ -1,8 +1,7 @@
-package hello.jdbc2.repository;
+package hello.jdbc2.service;
 
 import hello.jdbc2.domain.Member;
-import hello.jdbc2.service.MemberServiceV2;
-import org.assertj.core.api.Assertions;
+import hello.jdbc2.repository.MemberRepositoryV2;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -13,7 +12,6 @@ import java.sql.SQLException;
 
 import static hello.jdbc2.connection.ConnectionConst.*;
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 class MemberServiceV2Test {
     private MemberRepositoryV2 memberRepository;
