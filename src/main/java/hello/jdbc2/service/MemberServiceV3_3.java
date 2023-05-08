@@ -3,32 +3,22 @@ package hello.jdbc2.service;
 import hello.jdbc2.domain.Member;
 import hello.jdbc2.repository.MemberRepositoryV3;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.transaction.PlatformTransactionManager;
-import org.springframework.transaction.support.TransactionTemplate;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.SQLException;
 
 @Slf4j
-public class MemberServiceV3_2 {
+public class MemberServiceV3_3 {
 
-    private final TransactionTemplate txTemplate;
     private final MemberRepositoryV3 memberRepository;
 
-    public MemberServiceV3_2(PlatformTransactionManager transactionManager, MemberRepositoryV3 memberRepository) {
-        this.txTemplate = new TransactionTemplate(transactionManager);
+    public MemberServiceV3_3(MemberRepositoryV3 memberRepository) {
         this.memberRepository = memberRepository;
     }
 
+    @Transactional
     public void accountTransfer(String fromId, String toId, int money) throws SQLException {
-
-        txTemplate.executeWithoutResult((status) -> {
-            //비즈니스 로직
-            try {
-                bizLogic(fromId, toId, money);
-            } catch (SQLException e) {
-                throw new IllegalStateException(e);
-            }
-        });
+        bizLogic(fromId, toId, money);
     }
 
     private void bizLogic(String fromId, String toId, int
